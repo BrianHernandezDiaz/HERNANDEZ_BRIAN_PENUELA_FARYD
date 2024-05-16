@@ -1,0 +1,6 @@
+[2024-05-15 19:16:48] [ INFO ] [Application:27] Se obtuvo el producto: id:1-JAIFON-APPLE-2000
+[2024-05-15 19:16:48] [ INFO ] [Application:27] Se obtuvo el producto: id:2-ETO NO E UN JAIFON-CHINCHUNWA-800
+[2024-05-15 21:48:19] [ ERROR] [MedicamentoDaoH2:45] Table "MEDICAMENTOS" not found (this database is empty); SQL statement:
+INSERT INTO MEDICAMENTOS(CODIGO, NOMBRE, LABORATORIO, CANTIDAD, PRECIO) VALUES(?, ?, ?, ?, ?) [42104-224]
+[2024-05-15 21:48:19] [ ERROR] [MedicamentoDaoH2:51] Tuvimos un problema. Table "MEDICAMENTOS" not found (this database is empty); SQL statement:
+INSERT INTO MEDICAMENTOS(CODIGO, NOMBRE, LABORATORIO, CANTIDAD, PRECIO) VALUES(?, ?, ?, ?, ?) [42104-224]
