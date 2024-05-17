@@ -18,3 +18,19 @@ Id: 3 - Nombre: Juan Apellido: Perez
 [2024-05-17 10:10:29] [ INFO ] [OdontologoDaoEnMemoria:34] se encontraron los siguentes odontologos: [
 Id: 1 - Nombre: Jaime Apellido: Perlas, 
 Id: 2 - Nombre: Juancho Apellido: Tellez]
+[2024-05-17 10:26:57] [ INFO ] [OdontologoDaoEnMemoria:34] se encontraron los siguentes odontologos: [
+Id: 1 - Nombre: Jaime Apellido: Perlas, 
+Id: 2 - Nombre: Juancho Apellido: Tellez]
+[2024-05-17 10:27:05] [ INFO ] [OdontologoDaoEnMemoria:27] se guardó el siguiente odontologo: 
+Id: 3 - Nombre: Juan Apellido: Perez
+[2024-05-17 10:27:05] [ INFO ] [OdontologoDaoH2:42] Odontologo guardado: 
+Id: 5 - Nombre: Juan Apellido: Perez
+[2024-05-17 10:27:05] [ INFO ] [OdontologoDaoH2:97] Listado de todos los Odontologos: [
+Id: 1 - Nombre: FARYD Apellido: PENHUELA, 
+Id: 2 - Nombre: BRIAN Apellido: HERNANDEZ, 
+Id: 3 - Nombre: Juan Apellido: Perez, 
+Id: 4 - Nombre: Juan Apellido: Perez, 
+Id: 5 - Nombre: Juan Apellido: Perez]
+[2024-05-17 10:27:05] [ INFO ] [OdontologoDaoEnMemoria:34] se encontraron los siguentes odontologos: [
+Id: 1 - Nombre: Jaime Apellido: Perlas, 
+Id: 2 - Nombre: Juancho Apellido: Tellez]
