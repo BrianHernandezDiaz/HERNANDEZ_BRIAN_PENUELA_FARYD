@@ -15,7 +15,7 @@ public class OdontologoServiceTest {
     @Test
     void deberiaGuardarUnOdontologoYRetornarElIdEnH2() {
         odontologoService = new OdontologoService(new OdontologoDaoH2());
-        Odontologo odontologoAGuardar = new Odontologo(1111L, "Juan", "Perez");
+        Odontologo odontologoAGuardar = new Odontologo(1111, "Juan", "Perez");
 
         Odontologo odontologoGuardado = odontologoService.registrarOdontologo(odontologoAGuardar);
         assertNotNull(odontologoGuardado.getId());
@@ -30,7 +30,7 @@ public class OdontologoServiceTest {
     @Test
     void deberiaGuardarUnOdontologoYRetornarElIdEnMemory() {
         odontologoService = new OdontologoService(new OdontologoDaoEnMemoria());
-        Odontologo odontologoAGuardar = new Odontologo(1111L, "Juan", "Perez");
+        Odontologo odontologoAGuardar = new Odontologo(1111, "Juan", "Perez");
 
         Odontologo odontologoGuardado = odontologoService.registrarOdontologo(odontologoAGuardar);
         assertNotNull(odontologoGuardado.getId());

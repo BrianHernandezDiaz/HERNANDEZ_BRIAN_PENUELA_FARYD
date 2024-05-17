@@ -4,17 +4,28 @@ package com.backend.parcial.entity;
 public class Odontologo {
 
     private Long id;
+    private int numero_matricula;
     private String nombre;
     private String apellido;
 
-    public Odontologo(Long id, String nombre, String apellido) {
+    public int getNumero_matricula() {
+        return numero_matricula;
+    }
+
+    public void setNumero_matricula(int numero_matricula) {
+        this.numero_matricula = numero_matricula;
+    }
+
+    public Odontologo(Long id, int numero_matricula, String nombre, String apellido) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.id = id;
+        this.numero_matricula = numero_matricula;
     }
-    public Odontologo(String nombre, String apellido) {
+    public Odontologo(int numero_matricula, String nombre, String apellido) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.numero_matricula = numero_matricula;
     }
 
     public Long getId() {

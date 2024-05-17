@@ -16,7 +16,7 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
 
     @Override
     public Odontologo registrar(Odontologo odontologo) {
-        String insert = "INSERT INTO ODONTOLOGO(ID, NOMBRE, APELLIDO) VALUES(?, ?, ?)";
+        String insert = "INSERT INTO ODONTOLOGOS(NUMERO_MATRICULA, NOMBRE, APELLIDO) VALUES(?, ?, ?)";
 
         Connection connection = null;
         Odontologo odontologoRegistrado = null;
@@ -26,7 +26,7 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
             connection.setAutoCommit(false);
 
             PreparedStatement preparedStatement = connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setLong(1, odontologo.getId());
+            preparedStatement.setInt(1, odontologo.getNumero_matricula());
             preparedStatement.setString(2, odontologo.getNombre());
             preparedStatement.setString(3, odontologo.getApellido());
             preparedStatement.execute();
@@ -36,7 +36,7 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
             while (resultSet.next()) {
-                odontologoRegistrado = new Odontologo(resultSet.getLong("id"), odontologo.getNombre(), odontologo.getApellido());
+                odontologoRegistrado = new Odontologo(resultSet.getLong("id"), odontologo.getNumero_matricula(), odontologo.getNombre(), odontologo.getApellido());
             }
             connection.commit();
             LOGGER.info("Odontologo guardado: " + odontologoRegistrado);
@@ -72,7 +72,7 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
         List<Odontologo> Odontologos = new ArrayList<>();
         try{
             connection = H2Connection.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM OdontologoS");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM ODONTOLOGOS");
 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
@@ -101,7 +101,7 @@ public class OdontologoDaoH2 implements IDao<Odontologo> {
 
     private Odontologo crearObjetoOdontologo(ResultSet resultSet) throws SQLException {
 
-        return new Odontologo(resultSet.getLong("id"), resultSet.getString("nombre"), resultSet.getString("apellido"));
+        return new Odontologo(resultSet.getLong("id"), resultSet.getInt("numero_matricula"), resultSet.getString("nombre"), resultSet.getString("apellido"));
     }
 
 }
