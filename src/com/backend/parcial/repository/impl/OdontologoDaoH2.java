@@ -1,34 +1,34 @@
 package com.backend.parcial.repository.impl;
 
-import com.backend.parcial.entity.Medicamento;
+import com.backend.parcial.entity.Odontologo;
 import com.backend.parcial.repository.IDao;
 import com.backend.parcial.repository.dbconnection.H2Connection;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class MedicamentoDaoH2 implements IDao<Medicamento> {
+public class OdontologoDaoH2 implements IDao<Odontologo> {
 
-    private final Logger LOGGER = Logger.getLogger(MedicamentoDaoH2.class);
+    private final Logger LOGGER = Logger.getLogger(OdontologoDaoH2.class);
 
 
     @Override
-    public Medicamento registrar(Medicamento medicamento) {
-        String insert = "INSERT INTO MEDICAMENTOS(CODIGO, NOMBRE, LABORATORIO, CANTIDAD, PRECIO) VALUES(?, ?, ?, ?, ?)";
+    public Odontologo registrar(Odontologo odontologo) {
+        String insert = "INSERT INTO ODONTOLOGO(ID, NOMBRE, APELLIDO) VALUES(?, ?, ?)";
 
         Connection connection = null;
-        Medicamento medicamentoRegistrado = null;
+        Odontologo odontologoRegistrado = null;
 
         try {
             connection = H2Connection.getConnection();
             connection.setAutoCommit(false);
 
             PreparedStatement preparedStatement = connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setInt(1, medicamento.getCodigo());
-            preparedStatement.setString(2, medicamento.getNombre());
-            preparedStatement.setString(3, medicamento.getLaboratorio());
-            preparedStatement.setInt(4, medicamento.getCantidad());
-            preparedStatement.setDouble(5, medicamento.getPrecio());
+            preparedStatement.setLong(1, odontologo.getId());
+            preparedStatement.setString(2, odontologo.getNombre());
+            preparedStatement.setString(3, odontologo.getApellido());
             preparedStatement.execute();
 
             //connection.commit();
@@ -36,10 +36,10 @@ public class MedicamentoDaoH2 implements IDao<Medicamento> {
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
 
             while (resultSet.next()) {
-                medicamentoRegistrado = new Medicamento(resultSet.getLong("id"), medicamento.getCodigo(), medicamento.getNombre(), medicamento.getLaboratorio(), medicamento.getCantidad(), medicamento.getPrecio());
+                odontologoRegistrado = new Odontologo(resultSet.getLong("id"), odontologo.getNombre(), odontologo.getApellido());
             }
             connection.commit();
-            LOGGER.info("Medicamento guardado: " + medicamentoRegistrado);
+            LOGGER.info("Odontologo guardado: " + odontologoRegistrado);
 
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
@@ -62,28 +62,30 @@ public class MedicamentoDaoH2 implements IDao<Medicamento> {
                 LOGGER.error("No se pudo cerrar la conexion: " + ex.getMessage());
             }
         }
-        return medicamentoRegistrado;
+        return odontologoRegistrado;
     }
 
     @Override
-    public Medicamento buscarPorId(Long id) {
-        Connection connection = null;
-        Medicamento medicamentoEncontrado = null;
+    public List<Odontologo> listarTodos() {
 
-        try {
+        Connection connection = null;
+        List<Odontologo> Odontologos = new ArrayList<>();
+        try{
             connection = H2Connection.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM MEDICAMENTOS WHERE ID = ?");
-            preparedStatement.setLong(1, id);
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM OdontologoS");
 
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                medicamentoEncontrado = new Medicamento(resultSet.getLong(1), resultSet.getInt("codigo"), resultSet.getString("nombre"), resultSet.getString("laboratorio"), resultSet.getInt("cantidad"), resultSet.getDouble("precio"));
+            while (resultSet.next()){
+
+                Odontologo Odontologo = crearObjetoOdontologo(resultSet);
+                Odontologos.add(Odontologo);
             }
 
 
         } catch (Exception e) {
             LOGGER.error(e.getMessage());
             e.printStackTrace();
+
         } finally {
             try {
                 connection.close();
@@ -92,11 +94,14 @@ public class MedicamentoDaoH2 implements IDao<Medicamento> {
                 ex.printStackTrace();
             }
         }
+        LOGGER.info("Listado de todos los Odontologos: " + Odontologos);
 
-        if (medicamentoEncontrado != null) LOGGER.info("Se ha encontrado el medicamento " + medicamentoEncontrado);
-        else LOGGER.error("No se encontro el medicamento con id " + id);
+        return Odontologos;
+    }
 
-        return medicamentoEncontrado;
+    private Odontologo crearObjetoOdontologo(ResultSet resultSet) throws SQLException {
+
+        return new Odontologo(resultSet.getLong("id"), resultSet.getString("nombre"), resultSet.getString("apellido"));
     }
 
 }
