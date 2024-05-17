@@ -1,4 +1,4 @@
-package com.backend.parcial.repository.impl;
+/*package com.backend.parcial.repository.impl;
 
 import com.backend.parcial.entity.Odontologo;
 import com.backend.parcial.repository.IDao;
@@ -14,3 +14,4 @@ public class OdontologoDaoMySql implements IDao<Odontologo> {
         return null;
     }
 }
+*/
