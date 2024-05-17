@@ -1,3 +1,5 @@
+package com.backend.parcial;
+
 import com.backend.parcial.repository.dbconnection.H2Connection;
 import org.apache.log4j.Logger;
 
