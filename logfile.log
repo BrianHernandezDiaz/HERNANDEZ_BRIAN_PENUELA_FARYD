@@ -4,3 +4,17 @@
 INSERT INTO MEDICAMENTOS(CODIGO, NOMBRE, LABORATORIO, CANTIDAD, PRECIO) VALUES(?, ?, ?, ?, ?) [42104-224]
 [2024-05-15 21:48:19] [ ERROR] [MedicamentoDaoH2:51] Tuvimos un problema. Table "MEDICAMENTOS" not found (this database is empty); SQL statement:
 INSERT INTO MEDICAMENTOS(CODIGO, NOMBRE, LABORATORIO, CANTIDAD, PRECIO) VALUES(?, ?, ?, ?, ?) [42104-224]
+[2024-05-17 09:45:46] [ INFO ] [OdontologoDaoH2:42] Odontologo guardado: 
+Id: 3 - Nombre: Juan Apellido: Perez
+[2024-05-17 09:48:36] [ INFO ] [OdontologoDaoH2:42] Odontologo guardado: 
+Id: 4 - Nombre: Juan Apellido: Perez
+[2024-05-17 09:48:55] [ INFO ] [OdontologoDaoH2:97] Listado de todos los Odontologos: [
+Id: 1 - Nombre: FARYD Apellido: PENHUELA, 
+Id: 2 - Nombre: BRIAN Apellido: HERNANDEZ, 
+Id: 3 - Nombre: Juan Apellido: Perez, 
+Id: 4 - Nombre: Juan Apellido: Perez]
+[2024-05-17 10:10:08] [ INFO ] [OdontologoDaoEnMemoria:27] se guardó el siguiente odontologo: 
+Id: 3 - Nombre: Juan Apellido: Perez
+[2024-05-17 10:10:29] [ INFO ] [OdontologoDaoEnMemoria:34] se encontraron los siguentes odontologos: [
+Id: 1 - Nombre: Jaime Apellido: Perlas, 
+Id: 2 - Nombre: Juancho Apellido: Tellez]
